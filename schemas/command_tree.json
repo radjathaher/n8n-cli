@@ -1,0 +1,2416 @@
+{
+  "version": "1.1.1",
+  "base_path": "/api/v1",
+  "resources": [
+    {
+      "name": "audit",
+      "ops": [
+        {
+          "name": "generate-audit",
+          "method": "POST",
+          "path": "/audit",
+          "summary": "Generate an audit",
+          "description": "Generate a security audit for your n8n instance.",
+          "params": [],
+          "body": {
+            "required": false,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "additionalOptions",
+                "flag": "input-additional-options",
+                "required": false,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "credential",
+      "ops": [
+        {
+          "name": "create-credential",
+          "method": "POST",
+          "path": "/credentials",
+          "summary": "Create a credential",
+          "description": "Creates a credential that can be used by nodes of the specified type.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "createdAt",
+                "flag": "input-created-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "data",
+                "flag": "input-data",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "isResolvable",
+                "flag": "input-is-resolvable",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "updatedAt",
+                "flag": "input-updated-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "delete-credential",
+          "method": "DELETE",
+          "path": "/credentials/{id}",
+          "summary": "Delete credential by ID",
+          "description": "Deletes a credential from your instance. You must be the owner of the credentials",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-credential-type",
+          "method": "GET",
+          "path": "/credentials/schema/{credentialTypeName}",
+          "summary": "Show credential data schema",
+          "description": null,
+          "params": [
+            {
+              "name": "credentialTypeName",
+              "flag": "credential-type-name",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "transfer-credential",
+          "method": "PUT",
+          "path": "/credentials/{id}/transfer",
+          "summary": "Transfer a credential to another project.",
+          "description": "Transfer a credential to another project.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "destinationProjectId",
+                "flag": "input-destination-project-id",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "update-credential",
+          "method": "PATCH",
+          "path": "/credentials/{id}",
+          "summary": "Update credential by ID",
+          "description": "Updates an existing credential. You must be the owner of the credential.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "data",
+                "flag": "input-data",
+                "required": false,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "isGlobal",
+                "flag": "input-is-global",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "isPartialData",
+                "flag": "input-is-partial-data",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "isResolvable",
+                "flag": "input-is-resolvable",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "ops": [
+        {
+          "name": "create-data-table",
+          "method": "POST",
+          "path": "/data-tables",
+          "summary": "Create a new data table",
+          "description": "Create a new data table in your workspace.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "columns",
+                "flag": "input-columns",
+                "required": true,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "delete-data-table",
+          "method": "DELETE",
+          "path": "/data-tables/{dataTableId}",
+          "summary": "Delete a data table",
+          "description": "Delete a data table. This will also delete all rows in the table.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "delete-data-table-rows",
+          "method": "DELETE",
+          "path": "/data-tables/{dataTableId}/rows/delete",
+          "summary": "Delete rows from a data table",
+          "description": "Delete rows matching filter conditions from a data table. Filter is required to prevent accidental deletion of all data.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "dryRun",
+              "flag": "dry-run",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            },
+            {
+              "name": "filter",
+              "flag": "filter",
+              "location": "query",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "returnData",
+              "flag": "return-data",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-data-table",
+          "method": "GET",
+          "path": "/data-tables/{dataTableId}",
+          "summary": "Get a data table",
+          "description": "Retrieve a specific data table by ID.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-data-table-rows",
+          "method": "GET",
+          "path": "/data-tables/{dataTableId}/rows",
+          "summary": "Retrieve rows from a data table",
+          "description": "Query and retrieve rows from a data table with optional filtering, sorting, and pagination.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "filter",
+              "flag": "filter",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "search",
+              "flag": "search",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "sortBy",
+              "flag": "sort-by",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "insert-data-table-rows",
+          "method": "POST",
+          "path": "/data-tables/{dataTableId}/rows",
+          "summary": "Insert rows into a data table",
+          "description": "Insert one or more rows into a data table.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "data",
+                "flag": "input-data",
+                "required": true,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "returnType",
+                "flag": "input-return-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "list-data-tables",
+          "method": "GET",
+          "path": "/data-tables",
+          "summary": "List all data tables",
+          "description": "Retrieve a list of all data tables with optional filtering, sorting, and pagination.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "filter",
+              "flag": "filter",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "sortBy",
+              "flag": "sort-by",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "update-data-table",
+          "method": "PATCH",
+          "path": "/data-tables/{dataTableId}",
+          "summary": "Update a data table",
+          "description": "Update a data table's name.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "update-data-table-rows",
+          "method": "PATCH",
+          "path": "/data-tables/{dataTableId}/rows/update",
+          "summary": "Update rows in a data table",
+          "description": "Update rows matching filter conditions in a data table.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "data",
+                "flag": "input-data",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "dryRun",
+                "flag": "input-dry-run",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "filter",
+                "flag": "input-filter",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "returnData",
+                "flag": "input-return-data",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "upsert-data-table-row",
+          "method": "POST",
+          "path": "/data-tables/{dataTableId}/rows/upsert",
+          "summary": "Upsert a row in a data table",
+          "description": "Update an existing row or insert a new one if no row matches the filter conditions.",
+          "params": [
+            {
+              "name": "dataTableId",
+              "flag": "data-table-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "data",
+                "flag": "input-data",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "dryRun",
+                "flag": "input-dry-run",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "filter",
+                "flag": "input-filter",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "returnData",
+                "flag": "input-return-data",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "execution",
+      "ops": [
+        {
+          "name": "delete-execution",
+          "method": "DELETE",
+          "path": "/executions/{id}",
+          "summary": "Delete an execution",
+          "description": "Deletes an execution from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-execution",
+          "method": "GET",
+          "path": "/executions/{id}",
+          "summary": "Retrieve an execution",
+          "description": "Retrieve an execution from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "includeData",
+              "flag": "include-data",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-executions",
+          "method": "GET",
+          "path": "/executions",
+          "summary": "Retrieve all executions",
+          "description": "Retrieve all executions from your instance.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "includeData",
+              "flag": "include-data",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "status",
+              "flag": "status",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "workflowId",
+              "flag": "workflow-id",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "retry-execution",
+          "method": "POST",
+          "path": "/executions/{id}/retry",
+          "summary": "Retry an execution",
+          "description": "Retry an execution from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": false,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "loadWorkflow",
+                "flag": "input-load-workflow",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "projects",
+      "ops": [
+        {
+          "name": "add-users-to-project",
+          "method": "POST",
+          "path": "/projects/{projectId}/users",
+          "summary": "Add one or more users to a project",
+          "description": "Add one or more users to a project on your instance.",
+          "params": [
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": false,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "relations",
+                "flag": "input-relations",
+                "required": true,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "change-user-role-in-project",
+          "method": "PATCH",
+          "path": "/projects/{projectId}/users/{userId}",
+          "summary": "Change a user's role in a project",
+          "description": "Change a user's role in a project.",
+          "params": [
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "userId",
+              "flag": "user-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": false,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "role",
+                "flag": "input-role",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "create-project",
+          "method": "POST",
+          "path": "/projects",
+          "summary": "Create a project",
+          "description": "Create a project on your instance.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "delete-project",
+          "method": "DELETE",
+          "path": "/projects/{projectId}",
+          "summary": "Delete a project",
+          "description": "Delete a project from your instance.",
+          "params": [
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "delete-user-from-project",
+          "method": "DELETE",
+          "path": "/projects/{projectId}/users/{userId}",
+          "summary": "Delete a user from a project",
+          "description": "Delete a user from a project on your instance.",
+          "params": [
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "userId",
+              "flag": "user-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-projects",
+          "method": "GET",
+          "path": "/projects",
+          "summary": "Retrieve projects",
+          "description": "Retrieve projects from your instance.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "update-project",
+          "method": "PUT",
+          "path": "/projects/{projectId}",
+          "summary": "Update a project",
+          "description": "Update a project on your instance.",
+          "params": [
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "source-control",
+      "ops": [
+        {
+          "name": "pull",
+          "method": "POST",
+          "path": "/source-control/pull",
+          "summary": "Pull changes from the remote repository",
+          "description": "Requires the Source Control feature to be licensed and connected to a repository.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "force",
+                "flag": "input-force",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "variables",
+                "flag": "input-variables",
+                "required": false,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "ops": [
+        {
+          "name": "create-tag",
+          "method": "POST",
+          "path": "/tags",
+          "summary": "Create a tag",
+          "description": "Create a tag in your instance.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "createdAt",
+                "flag": "input-created-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "updatedAt",
+                "flag": "input-updated-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "delete-tag",
+          "method": "DELETE",
+          "path": "/tags/{id}",
+          "summary": "Delete a tag",
+          "description": "Deletes a tag.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-tag",
+          "method": "GET",
+          "path": "/tags/{id}",
+          "summary": "Retrieves a tag",
+          "description": "Retrieves a tag.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-tags",
+          "method": "GET",
+          "path": "/tags",
+          "summary": "Retrieve all tags",
+          "description": "Retrieve all tags from your instance.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "update-tag",
+          "method": "PUT",
+          "path": "/tags/{id}",
+          "summary": "Update a tag",
+          "description": "Update a tag.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "createdAt",
+                "flag": "input-created-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "updatedAt",
+                "flag": "input-updated-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "ops": [
+        {
+          "name": "change-role",
+          "method": "PATCH",
+          "path": "/users/{id}/role",
+          "summary": "Change a user's global role",
+          "description": "Change a user's global role",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "newRoleName",
+                "flag": "input-new-role-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "create-user",
+          "method": "POST",
+          "path": "/users",
+          "summary": "Create multiple users",
+          "description": "Create one or more users.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "array",
+              "item": {
+                "kind": "object",
+                "item": null
+              }
+            },
+            "input_fields": []
+          }
+        },
+        {
+          "name": "delete-user",
+          "method": "DELETE",
+          "path": "/users/{id}",
+          "summary": "Delete a user",
+          "description": "Delete a user from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-user",
+          "method": "GET",
+          "path": "/users/{id}",
+          "summary": "Get user by ID/Email",
+          "description": "Retrieve a user from your instance. Only available for the instance owner.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "includeRole",
+              "flag": "include-role",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-users",
+          "method": "GET",
+          "path": "/users",
+          "summary": "Retrieve all users",
+          "description": "Retrieve all users from your instance. Only available for the instance owner.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "includeRole",
+              "flag": "include-role",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "variables",
+      "ops": [
+        {
+          "name": "create-variable",
+          "method": "POST",
+          "path": "/variables",
+          "summary": "Create a variable",
+          "description": "Create a variable in your instance.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "key",
+                "flag": "input-key",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "projectId",
+                "flag": "input-project-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "value",
+                "flag": "input-value",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "delete-variable",
+          "method": "DELETE",
+          "path": "/variables/{id}",
+          "summary": "Delete a variable",
+          "description": "Delete a variable from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-variables",
+          "method": "GET",
+          "path": "/variables",
+          "summary": "Retrieve variables",
+          "description": "Retrieve variables from your instance.",
+          "params": [
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "state",
+              "flag": "state",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "update-variable",
+          "method": "PUT",
+          "path": "/variables/{id}",
+          "summary": "Update a variable",
+          "description": "Update a variable from your instance.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "key",
+                "flag": "input-key",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "projectId",
+                "flag": "input-project-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "type",
+                "flag": "input-type",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "value",
+                "flag": "input-value",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "workflow",
+      "ops": [
+        {
+          "name": "activate-workflow",
+          "method": "POST",
+          "path": "/workflows/{id}/activate",
+          "summary": "Publish a workflow",
+          "description": "Publish a workflow. In n8n v1, this action was termed activating a workflow.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": false,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "description",
+                "flag": "input-description",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "versionId",
+                "flag": "input-version-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "create-workflow",
+          "method": "POST",
+          "path": "/workflows",
+          "summary": "Create a workflow",
+          "description": "Create a workflow in your instance.",
+          "params": [],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "active",
+                "flag": "input-active",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "activeVersion",
+                "flag": "input-active-version",
+                "required": false,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "connections",
+                "flag": "input-connections",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "createdAt",
+                "flag": "input-created-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "nodes",
+                "flag": "input-nodes",
+                "required": true,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "settings",
+                "flag": "input-settings",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "shared",
+                "flag": "input-shared",
+                "required": false,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "staticData",
+                "flag": "input-static-data",
+                "required": false,
+                "schema": {
+                  "kind": "unknown",
+                  "item": null
+                }
+              },
+              {
+                "name": "tags",
+                "flag": "input-tags",
+                "required": false,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "updatedAt",
+                "flag": "input-updated-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "deactivate-workflow",
+          "method": "POST",
+          "path": "/workflows/{id}/deactivate",
+          "summary": "Deactivate a workflow",
+          "description": "Deactivate a workflow.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "delete-workflow",
+          "method": "DELETE",
+          "path": "/workflows/{id}",
+          "summary": "Delete a workflow",
+          "description": "Delete a workflow.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-workflow",
+          "method": "GET",
+          "path": "/workflows/{id}",
+          "summary": "Retrieve a workflow",
+          "description": "Retrieve a workflow.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "excludePinnedData",
+              "flag": "exclude-pinned-data",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-workflow-tags",
+          "method": "GET",
+          "path": "/workflows/{id}/tags",
+          "summary": "Get workflow tags",
+          "description": "Get workflow tags.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-workflow-version",
+          "method": "GET",
+          "path": "/workflows/{id}/{versionId}",
+          "summary": "Retrieves a specific version of a workflow",
+          "description": "Retrieves a specific version of a workflow from workflow history.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "versionId",
+              "flag": "version-id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "get-workflows",
+          "method": "GET",
+          "path": "/workflows",
+          "summary": "Retrieve all workflows",
+          "description": "Retrieve all workflows from your instance.",
+          "params": [
+            {
+              "name": "active",
+              "flag": "active",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            },
+            {
+              "name": "cursor",
+              "flag": "cursor",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "excludePinnedData",
+              "flag": "exclude-pinned-data",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "boolean",
+                "item": null
+              }
+            },
+            {
+              "name": "limit",
+              "flag": "limit",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "number",
+                "item": null
+              }
+            },
+            {
+              "name": "name",
+              "flag": "name",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "projectId",
+              "flag": "project-id",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            },
+            {
+              "name": "tags",
+              "flag": "tags",
+              "location": "query",
+              "required": false,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": null
+        },
+        {
+          "name": "transfer-workflow",
+          "method": "PUT",
+          "path": "/workflows/{id}/transfer",
+          "summary": "Transfer a workflow to another project",
+          "description": "Transfer a workflow to another project",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "destinationProjectId",
+                "flag": "input-destination-project-id",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "update-workflow",
+          "method": "PUT",
+          "path": "/workflows/{id}",
+          "summary": "Update a workflow",
+          "description": "Update a workflow. If the workflow is published, the updated version will be automatically re-published.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "object",
+              "item": null
+            },
+            "input_fields": [
+              {
+                "name": "active",
+                "flag": "input-active",
+                "required": false,
+                "schema": {
+                  "kind": "boolean",
+                  "item": null
+                }
+              },
+              {
+                "name": "activeVersion",
+                "flag": "input-active-version",
+                "required": false,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "connections",
+                "flag": "input-connections",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "createdAt",
+                "flag": "input-created-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "id",
+                "flag": "input-id",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "name",
+                "flag": "input-name",
+                "required": true,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              },
+              {
+                "name": "nodes",
+                "flag": "input-nodes",
+                "required": true,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "settings",
+                "flag": "input-settings",
+                "required": true,
+                "schema": {
+                  "kind": "object",
+                  "item": null
+                }
+              },
+              {
+                "name": "shared",
+                "flag": "input-shared",
+                "required": false,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "staticData",
+                "flag": "input-static-data",
+                "required": false,
+                "schema": {
+                  "kind": "unknown",
+                  "item": null
+                }
+              },
+              {
+                "name": "tags",
+                "flag": "input-tags",
+                "required": false,
+                "schema": {
+                  "kind": "array",
+                  "item": {
+                    "kind": "object",
+                    "item": null
+                  }
+                }
+              },
+              {
+                "name": "updatedAt",
+                "flag": "input-updated-at",
+                "required": false,
+                "schema": {
+                  "kind": "string",
+                  "item": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "update-workflow-tags",
+          "method": "PUT",
+          "path": "/workflows/{id}/tags",
+          "summary": "Update tags of a workflow",
+          "description": "Update tags of a workflow.",
+          "params": [
+            {
+              "name": "id",
+              "flag": "id",
+              "location": "path",
+              "required": true,
+              "schema": {
+                "kind": "string",
+                "item": null
+              }
+            }
+          ],
+          "body": {
+            "required": true,
+            "content_type": "application/json",
+            "schema": {
+              "kind": "array",
+              "item": {
+                "kind": "object",
+                "item": null
+              }
+            },
+            "input_fields": []
+          }
+        }
+      ]
+    }
+  ]
+}
