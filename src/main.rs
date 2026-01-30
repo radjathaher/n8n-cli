@@ -282,6 +282,12 @@ fn build_url(
         base_path = format!("/{base_path}");
     }
 
+    let api_base = if base.ends_with(&base_path) {
+        base.to_string()
+    } else {
+        format!("{base}{base_path}")
+    };
+
     let mut path = op.path.clone();
     for param in op.params.iter().filter(|p| p.location == "path") {
         let value = matches
@@ -291,7 +297,7 @@ fn build_url(
         path = path.replace(&format!("{{{}}}", param.name), encoded.as_ref());
     }
 
-    let url_str = format!("{base}{base_path}{path}");
+    let url_str = format!("{api_base}{path}");
     let mut url = Url::parse(&url_str).context("invalid N8N_BASE_URL")?;
 
     let mut query_pairs = Vec::new();
